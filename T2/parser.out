@@ -1,0 +1,283 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> comando
+Rule 1     comando -> MKDISK optional_unit
+Rule 2     comando -> MKDISK
+Rule 3     optional_unit -> UNIT IGUAL LETRA
+Rule 4     optional_unit -> <empty>
+Rule 5     comando -> FDISK atributos
+Rule 6     atributos -> atributos atributo
+Rule 7     atributos -> atributo
+Rule 8     atributo -> MAYOR TYPE IGUAL LETRA
+Rule 9     atributo -> MAYOR PATH IGUAL DIR
+Rule 10    atributo -> MAYOR UNIT IGUAL LETRA_FKDISK
+Rule 11    atributo -> MAYOR NAME IGUAL CADENA
+Rule 12    atributo -> MAYOR SIZE IGUAL NUM
+
+Terminals, with rules where they appear
+
+CADENA               : 11
+DIR                  : 9
+FDISK                : 5
+IGUAL                : 3 8 9 10 11 12
+LETRA                : 3 8
+LETRA_FKDISK         : 10
+MAYOR                : 8 9 10 11 12
+MKDISK               : 1 2
+NAME                 : 11
+NUM                  : 12
+PATH                 : 9
+SIZE                 : 12
+TYPE                 : 8
+UNIT                 : 3 10
+error                : 
+
+Nonterminals, with rules where they appear
+
+atributo             : 6 7
+atributos            : 5 6
+comando              : 0
+optional_unit        : 1
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . comando
+    (1) comando -> . MKDISK optional_unit
+    (2) comando -> . MKDISK
+    (5) comando -> . FDISK atributos
+
+    MKDISK          shift and go to state 2
+    FDISK           shift and go to state 3
+
+    comando                        shift and go to state 1
+
+state 1
+
+    (0) S' -> comando .
+
+
+
+state 2
+
+    (1) comando -> MKDISK . optional_unit
+    (2) comando -> MKDISK .
+    (3) optional_unit -> . UNIT IGUAL LETRA
+    (4) optional_unit -> .
+
+  ! reduce/reduce conflict for $end resolved using rule 2 (comando -> MKDISK .)
+    $end            reduce using rule 2 (comando -> MKDISK .)
+    UNIT            shift and go to state 5
+
+  ! $end            [ reduce using rule 4 (optional_unit -> .) ]
+
+    optional_unit                  shift and go to state 4
+
+state 3
+
+    (5) comando -> FDISK . atributos
+    (6) atributos -> . atributos atributo
+    (7) atributos -> . atributo
+    (8) atributo -> . MAYOR TYPE IGUAL LETRA
+    (9) atributo -> . MAYOR PATH IGUAL DIR
+    (10) atributo -> . MAYOR UNIT IGUAL LETRA_FKDISK
+    (11) atributo -> . MAYOR NAME IGUAL CADENA
+    (12) atributo -> . MAYOR SIZE IGUAL NUM
+
+    MAYOR           shift and go to state 8
+
+    atributos                      shift and go to state 6
+    atributo                       shift and go to state 7
+
+state 4
+
+    (1) comando -> MKDISK optional_unit .
+
+    $end            reduce using rule 1 (comando -> MKDISK optional_unit .)
+
+
+state 5
+
+    (3) optional_unit -> UNIT . IGUAL LETRA
+
+    IGUAL           shift and go to state 9
+
+
+state 6
+
+    (5) comando -> FDISK atributos .
+    (6) atributos -> atributos . atributo
+    (8) atributo -> . MAYOR TYPE IGUAL LETRA
+    (9) atributo -> . MAYOR PATH IGUAL DIR
+    (10) atributo -> . MAYOR UNIT IGUAL LETRA_FKDISK
+    (11) atributo -> . MAYOR NAME IGUAL CADENA
+    (12) atributo -> . MAYOR SIZE IGUAL NUM
+
+    $end            reduce using rule 5 (comando -> FDISK atributos .)
+    MAYOR           shift and go to state 8
+
+    atributo                       shift and go to state 10
+
+state 7
+
+    (7) atributos -> atributo .
+
+    MAYOR           reduce using rule 7 (atributos -> atributo .)
+    $end            reduce using rule 7 (atributos -> atributo .)
+
+
+state 8
+
+    (8) atributo -> MAYOR . TYPE IGUAL LETRA
+    (9) atributo -> MAYOR . PATH IGUAL DIR
+    (10) atributo -> MAYOR . UNIT IGUAL LETRA_FKDISK
+    (11) atributo -> MAYOR . NAME IGUAL CADENA
+    (12) atributo -> MAYOR . SIZE IGUAL NUM
+
+    TYPE            shift and go to state 11
+    PATH            shift and go to state 12
+    UNIT            shift and go to state 13
+    NAME            shift and go to state 14
+    SIZE            shift and go to state 15
+
+
+state 9
+
+    (3) optional_unit -> UNIT IGUAL . LETRA
+
+    LETRA           shift and go to state 16
+
+
+state 10
+
+    (6) atributos -> atributos atributo .
+
+    MAYOR           reduce using rule 6 (atributos -> atributos atributo .)
+    $end            reduce using rule 6 (atributos -> atributos atributo .)
+
+
+state 11
+
+    (8) atributo -> MAYOR TYPE . IGUAL LETRA
+
+    IGUAL           shift and go to state 17
+
+
+state 12
+
+    (9) atributo -> MAYOR PATH . IGUAL DIR
+
+    IGUAL           shift and go to state 18
+
+
+state 13
+
+    (10) atributo -> MAYOR UNIT . IGUAL LETRA_FKDISK
+
+    IGUAL           shift and go to state 19
+
+
+state 14
+
+    (11) atributo -> MAYOR NAME . IGUAL CADENA
+
+    IGUAL           shift and go to state 20
+
+
+state 15
+
+    (12) atributo -> MAYOR SIZE . IGUAL NUM
+
+    IGUAL           shift and go to state 21
+
+
+state 16
+
+    (3) optional_unit -> UNIT IGUAL LETRA .
+
+    $end            reduce using rule 3 (optional_unit -> UNIT IGUAL LETRA .)
+
+
+state 17
+
+    (8) atributo -> MAYOR TYPE IGUAL . LETRA
+
+    LETRA           shift and go to state 22
+
+
+state 18
+
+    (9) atributo -> MAYOR PATH IGUAL . DIR
+
+    DIR             shift and go to state 23
+
+
+state 19
+
+    (10) atributo -> MAYOR UNIT IGUAL . LETRA_FKDISK
+
+    LETRA_FKDISK    shift and go to state 24
+
+
+state 20
+
+    (11) atributo -> MAYOR NAME IGUAL . CADENA
+
+    CADENA          shift and go to state 25
+
+
+state 21
+
+    (12) atributo -> MAYOR SIZE IGUAL . NUM
+
+    NUM             shift and go to state 26
+
+
+state 22
+
+    (8) atributo -> MAYOR TYPE IGUAL LETRA .
+
+    MAYOR           reduce using rule 8 (atributo -> MAYOR TYPE IGUAL LETRA .)
+    $end            reduce using rule 8 (atributo -> MAYOR TYPE IGUAL LETRA .)
+
+
+state 23
+
+    (9) atributo -> MAYOR PATH IGUAL DIR .
+
+    MAYOR           reduce using rule 9 (atributo -> MAYOR PATH IGUAL DIR .)
+    $end            reduce using rule 9 (atributo -> MAYOR PATH IGUAL DIR .)
+
+
+state 24
+
+    (10) atributo -> MAYOR UNIT IGUAL LETRA_FKDISK .
+
+    MAYOR           reduce using rule 10 (atributo -> MAYOR UNIT IGUAL LETRA_FKDISK .)
+    $end            reduce using rule 10 (atributo -> MAYOR UNIT IGUAL LETRA_FKDISK .)
+
+
+state 25
+
+    (11) atributo -> MAYOR NAME IGUAL CADENA .
+
+    MAYOR           reduce using rule 11 (atributo -> MAYOR NAME IGUAL CADENA .)
+    $end            reduce using rule 11 (atributo -> MAYOR NAME IGUAL CADENA .)
+
+
+state 26
+
+    (12) atributo -> MAYOR SIZE IGUAL NUM .
+
+    MAYOR           reduce using rule 12 (atributo -> MAYOR SIZE IGUAL NUM .)
+    $end            reduce using rule 12 (atributo -> MAYOR SIZE IGUAL NUM .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: reduce/reduce conflict in state 2 resolved using rule (comando -> MKDISK)
+WARNING: rejected rule (optional_unit -> <empty>) in state 2
+WARNING: Rule (optional_unit -> <empty>) is never reduced

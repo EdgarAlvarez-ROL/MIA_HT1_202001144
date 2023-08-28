@@ -1,0 +1,371 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    LETRA_MKDISK
+
+Grammar
+
+Rule 0     S' -> comando
+Rule 1     comando -> MKDISK atributosm
+Rule 2     atributosm -> atributosm atributom
+Rule 3     atributosm -> atributom
+Rule 4     atributom -> MAYOR PATH IGUAL DIR
+Rule 5     atributom -> MAYOR UNIT IGUAL LETRA_FDISK
+Rule 6     atributom -> MAYOR SIZE IGUAL NUM
+Rule 7     comando -> FDISK atributos
+Rule 8     atributos -> atributos atributo
+Rule 9     atributos -> atributo
+Rule 10    atributo -> MAYOR PATH IGUAL DIR
+Rule 11    atributo -> MAYOR TYPE IGUAL LETRA_FDISK
+Rule 12    atributo -> MAYOR UNIT IGUAL LETRA_FDISK
+Rule 13    atributo -> MAYOR NAME IGUAL CADENA
+Rule 14    atributo -> MAYOR SIZE IGUAL NUM
+Rule 15    comando -> REP
+
+Terminals, with rules where they appear
+
+CADENA               : 13
+DIR                  : 4 10
+FDISK                : 7
+IGUAL                : 4 5 6 10 11 12 13 14
+LETRA_FDISK          : 5 11 12
+LETRA_MKDISK         : 
+MAYOR                : 4 5 6 10 11 12 13 14
+MKDISK               : 1
+NAME                 : 13
+NUM                  : 6 14
+PATH                 : 4 10
+REP                  : 15
+SIZE                 : 6 14
+TYPE                 : 11
+UNIT                 : 5 12
+error                : 
+
+Nonterminals, with rules where they appear
+
+atributo             : 8 9
+atributom            : 2 3
+atributos            : 7 8
+atributosm           : 1 2
+comando              : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . comando
+    (1) comando -> . MKDISK atributosm
+    (7) comando -> . FDISK atributos
+    (15) comando -> . REP
+
+    MKDISK          shift and go to state 2
+    FDISK           shift and go to state 3
+    REP             shift and go to state 4
+
+    comando                        shift and go to state 1
+
+state 1
+
+    (0) S' -> comando .
+
+
+
+state 2
+
+    (1) comando -> MKDISK . atributosm
+    (2) atributosm -> . atributosm atributom
+    (3) atributosm -> . atributom
+    (4) atributom -> . MAYOR PATH IGUAL DIR
+    (5) atributom -> . MAYOR UNIT IGUAL LETRA_FDISK
+    (6) atributom -> . MAYOR SIZE IGUAL NUM
+
+    MAYOR           shift and go to state 7
+
+    atributosm                     shift and go to state 5
+    atributom                      shift and go to state 6
+
+state 3
+
+    (7) comando -> FDISK . atributos
+    (8) atributos -> . atributos atributo
+    (9) atributos -> . atributo
+    (10) atributo -> . MAYOR PATH IGUAL DIR
+    (11) atributo -> . MAYOR TYPE IGUAL LETRA_FDISK
+    (12) atributo -> . MAYOR UNIT IGUAL LETRA_FDISK
+    (13) atributo -> . MAYOR NAME IGUAL CADENA
+    (14) atributo -> . MAYOR SIZE IGUAL NUM
+
+    MAYOR           shift and go to state 10
+
+    atributos                      shift and go to state 8
+    atributo                       shift and go to state 9
+
+state 4
+
+    (15) comando -> REP .
+
+    $end            reduce using rule 15 (comando -> REP .)
+
+
+state 5
+
+    (1) comando -> MKDISK atributosm .
+    (2) atributosm -> atributosm . atributom
+    (4) atributom -> . MAYOR PATH IGUAL DIR
+    (5) atributom -> . MAYOR UNIT IGUAL LETRA_FDISK
+    (6) atributom -> . MAYOR SIZE IGUAL NUM
+
+    $end            reduce using rule 1 (comando -> MKDISK atributosm .)
+    MAYOR           shift and go to state 7
+
+    atributom                      shift and go to state 11
+
+state 6
+
+    (3) atributosm -> atributom .
+
+    MAYOR           reduce using rule 3 (atributosm -> atributom .)
+    $end            reduce using rule 3 (atributosm -> atributom .)
+
+
+state 7
+
+    (4) atributom -> MAYOR . PATH IGUAL DIR
+    (5) atributom -> MAYOR . UNIT IGUAL LETRA_FDISK
+    (6) atributom -> MAYOR . SIZE IGUAL NUM
+
+    PATH            shift and go to state 12
+    UNIT            shift and go to state 13
+    SIZE            shift and go to state 14
+
+
+state 8
+
+    (7) comando -> FDISK atributos .
+    (8) atributos -> atributos . atributo
+    (10) atributo -> . MAYOR PATH IGUAL DIR
+    (11) atributo -> . MAYOR TYPE IGUAL LETRA_FDISK
+    (12) atributo -> . MAYOR UNIT IGUAL LETRA_FDISK
+    (13) atributo -> . MAYOR NAME IGUAL CADENA
+    (14) atributo -> . MAYOR SIZE IGUAL NUM
+
+    $end            reduce using rule 7 (comando -> FDISK atributos .)
+    MAYOR           shift and go to state 10
+
+    atributo                       shift and go to state 15
+
+state 9
+
+    (9) atributos -> atributo .
+
+    MAYOR           reduce using rule 9 (atributos -> atributo .)
+    $end            reduce using rule 9 (atributos -> atributo .)
+
+
+state 10
+
+    (10) atributo -> MAYOR . PATH IGUAL DIR
+    (11) atributo -> MAYOR . TYPE IGUAL LETRA_FDISK
+    (12) atributo -> MAYOR . UNIT IGUAL LETRA_FDISK
+    (13) atributo -> MAYOR . NAME IGUAL CADENA
+    (14) atributo -> MAYOR . SIZE IGUAL NUM
+
+    PATH            shift and go to state 16
+    TYPE            shift and go to state 17
+    UNIT            shift and go to state 18
+    NAME            shift and go to state 19
+    SIZE            shift and go to state 20
+
+
+state 11
+
+    (2) atributosm -> atributosm atributom .
+
+    MAYOR           reduce using rule 2 (atributosm -> atributosm atributom .)
+    $end            reduce using rule 2 (atributosm -> atributosm atributom .)
+
+
+state 12
+
+    (4) atributom -> MAYOR PATH . IGUAL DIR
+
+    IGUAL           shift and go to state 21
+
+
+state 13
+
+    (5) atributom -> MAYOR UNIT . IGUAL LETRA_FDISK
+
+    IGUAL           shift and go to state 22
+
+
+state 14
+
+    (6) atributom -> MAYOR SIZE . IGUAL NUM
+
+    IGUAL           shift and go to state 23
+
+
+state 15
+
+    (8) atributos -> atributos atributo .
+
+    MAYOR           reduce using rule 8 (atributos -> atributos atributo .)
+    $end            reduce using rule 8 (atributos -> atributos atributo .)
+
+
+state 16
+
+    (10) atributo -> MAYOR PATH . IGUAL DIR
+
+    IGUAL           shift and go to state 24
+
+
+state 17
+
+    (11) atributo -> MAYOR TYPE . IGUAL LETRA_FDISK
+
+    IGUAL           shift and go to state 25
+
+
+state 18
+
+    (12) atributo -> MAYOR UNIT . IGUAL LETRA_FDISK
+
+    IGUAL           shift and go to state 26
+
+
+state 19
+
+    (13) atributo -> MAYOR NAME . IGUAL CADENA
+
+    IGUAL           shift and go to state 27
+
+
+state 20
+
+    (14) atributo -> MAYOR SIZE . IGUAL NUM
+
+    IGUAL           shift and go to state 28
+
+
+state 21
+
+    (4) atributom -> MAYOR PATH IGUAL . DIR
+
+    DIR             shift and go to state 29
+
+
+state 22
+
+    (5) atributom -> MAYOR UNIT IGUAL . LETRA_FDISK
+
+    LETRA_FDISK     shift and go to state 30
+
+
+state 23
+
+    (6) atributom -> MAYOR SIZE IGUAL . NUM
+
+    NUM             shift and go to state 31
+
+
+state 24
+
+    (10) atributo -> MAYOR PATH IGUAL . DIR
+
+    DIR             shift and go to state 32
+
+
+state 25
+
+    (11) atributo -> MAYOR TYPE IGUAL . LETRA_FDISK
+
+    LETRA_FDISK     shift and go to state 33
+
+
+state 26
+
+    (12) atributo -> MAYOR UNIT IGUAL . LETRA_FDISK
+
+    LETRA_FDISK     shift and go to state 34
+
+
+state 27
+
+    (13) atributo -> MAYOR NAME IGUAL . CADENA
+
+    CADENA          shift and go to state 35
+
+
+state 28
+
+    (14) atributo -> MAYOR SIZE IGUAL . NUM
+
+    NUM             shift and go to state 36
+
+
+state 29
+
+    (4) atributom -> MAYOR PATH IGUAL DIR .
+
+    MAYOR           reduce using rule 4 (atributom -> MAYOR PATH IGUAL DIR .)
+    $end            reduce using rule 4 (atributom -> MAYOR PATH IGUAL DIR .)
+
+
+state 30
+
+    (5) atributom -> MAYOR UNIT IGUAL LETRA_FDISK .
+
+    MAYOR           reduce using rule 5 (atributom -> MAYOR UNIT IGUAL LETRA_FDISK .)
+    $end            reduce using rule 5 (atributom -> MAYOR UNIT IGUAL LETRA_FDISK .)
+
+
+state 31
+
+    (6) atributom -> MAYOR SIZE IGUAL NUM .
+
+    MAYOR           reduce using rule 6 (atributom -> MAYOR SIZE IGUAL NUM .)
+    $end            reduce using rule 6 (atributom -> MAYOR SIZE IGUAL NUM .)
+
+
+state 32
+
+    (10) atributo -> MAYOR PATH IGUAL DIR .
+
+    MAYOR           reduce using rule 10 (atributo -> MAYOR PATH IGUAL DIR .)
+    $end            reduce using rule 10 (atributo -> MAYOR PATH IGUAL DIR .)
+
+
+state 33
+
+    (11) atributo -> MAYOR TYPE IGUAL LETRA_FDISK .
+
+    MAYOR           reduce using rule 11 (atributo -> MAYOR TYPE IGUAL LETRA_FDISK .)
+    $end            reduce using rule 11 (atributo -> MAYOR TYPE IGUAL LETRA_FDISK .)
+
+
+state 34
+
+    (12) atributo -> MAYOR UNIT IGUAL LETRA_FDISK .
+
+    MAYOR           reduce using rule 12 (atributo -> MAYOR UNIT IGUAL LETRA_FDISK .)
+    $end            reduce using rule 12 (atributo -> MAYOR UNIT IGUAL LETRA_FDISK .)
+
+
+state 35
+
+    (13) atributo -> MAYOR NAME IGUAL CADENA .
+
+    MAYOR           reduce using rule 13 (atributo -> MAYOR NAME IGUAL CADENA .)
+    $end            reduce using rule 13 (atributo -> MAYOR NAME IGUAL CADENA .)
+
+
+state 36
+
+    (14) atributo -> MAYOR SIZE IGUAL NUM .
+
+    MAYOR           reduce using rule 14 (atributo -> MAYOR SIZE IGUAL NUM .)
+    $end            reduce using rule 14 (atributo -> MAYOR SIZE IGUAL NUM .)
+

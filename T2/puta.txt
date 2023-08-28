@@ -1,0 +1,12 @@
+Evaluar[-2*2];
+
+
+// # Regla para la parte opcional PATH IGUAL PATH
+// def p_optional_unit(p):
+//     '''optional_unit : MAYOR UNIT IGUAL LETRA 
+//                      | '''
+//     # print("path len: "+str(len(p)))
+//     if len(p) == 5:
+//         p[0] = p[4]
+//     else:
+//         p[0] = ""  # Valor vacío si no está presente

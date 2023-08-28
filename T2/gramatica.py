@@ -1,0 +1,22 @@
+tokens  = (
+    'RMKDISK',
+    'RPATH',
+    'CADENA',
+    'RMBR_TAMAÑO',
+    'RMBR_FECHA_CREACION',
+    'RMBR_DSK_SIGNATURE',
+    'RREP',
+    'REXECUTE',
+    'GUION',
+    'PARIZQ',
+    'PARDER',
+    'CORIZQ',
+    'CORDER',
+    'MAS',
+    'MENOS',
+    'POR',
+    'DIVIDIDO',
+    'DECIMAL',
+    'ENTERO',
+    'PTCOMA'
+)
